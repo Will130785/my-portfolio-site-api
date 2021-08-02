@@ -1,6 +1,8 @@
 // Require packages
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const dbConnect = require('./db-connect')
+const { DB_CONNECT } = process.env
 
 // Initiate routes
 const routes = require(`${global.APP_ROOT}/routes`)
@@ -12,6 +14,8 @@ module.exports = async (app) => {
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
   // Use cors
   app.use(cors())
+  // Connect to database
+  dbConnect(DB_CONNECT)
 
   // Add custom header to responses - good for testion
   app.use((req, res, next) => {
