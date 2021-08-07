@@ -1,9 +1,53 @@
-module.exports.getAllFreelance = async (req, res) => {
-  const data = {
-    title: 'Freelance work page',
-    description: 'Freelance work will go here'
-  }
+const Freelance = require(`${global.APP_ROOT}/models/Freelance`)
 
-  console.log(data)
-  res.send(data)
+// Get all freelance
+module.exports.getAllFreelance = async (req, res) => {
+  try {
+    Freelance.find({}, (err, freelance) => {
+      if (!err) {
+        console.log('Retrieved all freelance')
+        res.send(freelance)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// Create new freelance
+module.exports.createFreelance = async (req, res) => {
+  // Get data from req
+  const data = await req.body
+  try {
+    Freelance.create(data, (err, newFreelance) => {
+      if (!err) {
+        console.log('Created new freelance')
+        res.send(newFreelance)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// Delete freelance
+module.exports.deleteFreelance = async (req, res) => {
+  // get id from params
+  const id = await req.params.id
+  try {
+    Freelance.findByIdAndDelete(id, (err, deletedFreelance) => {
+      if (!err) {
+        console.log('Freelance deleted')
+        res.send(deletedFreelance)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
