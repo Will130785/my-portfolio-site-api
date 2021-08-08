@@ -22,4 +22,10 @@ router.delete('/experience/:id', ctrl.experienceCtrl.deleteExperience)
 router.delete('/freelance/:id', ctrl.freelanceCtrl.deleteFreelance)
 router.delete('/projects/:id', ctrl.projectsCtrl.deleteProject)
 
+// WEBSITE ROUTES
+router.get('/website/blogs', ctrl.websiteCtrl.getBlogsWebsite)
+router.get('/website/current', ctrl.websiteCtrl.getCurrentWebsite)
+router.get('/website/freelance', ctrl.websiteCtrl.getFreelanceWebsite)
+router.get('/website/projects', ctrl.websiteCtrl.getProjectsWebsite)
+
 module.exports = router
