@@ -3,6 +3,7 @@ const currentCtrl = require('./current')
 const experienceCtrl = require('./experience')
 const freelanceCtrl = require('./freelance')
 const projectsCtrl = require('./projects')
+const authCtrl = require('./auth')
 const websiteCtrl = require('./website')
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   experienceCtrl,
   freelanceCtrl,
   projectsCtrl,
+  authCtrl,
   websiteCtrl
 }
