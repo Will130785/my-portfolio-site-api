@@ -34,6 +34,26 @@ module.exports.createCurrent = async (req, res) => {
   }
 }
 
+// Update Current
+module.exports.updateCurrent = async (req, res) => {
+  // Get id from params
+  const id = await req.params.id
+  // Get data from body
+  const data = await req.body
+  try {
+    Current.findByIdAndUpdate(id, data, (err, updatedCurrent) => {
+      if (!err) {
+        console.log('Updated current')
+        res.send(updatedCurrent)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // Delete Current
 module.exports.deleteCurrent = async (req, res) => {
   // Get id from params

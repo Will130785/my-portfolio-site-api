@@ -15,6 +15,13 @@ router.post('/experience', ctrl.experienceCtrl.createExperience)
 router.post('/freelance', ctrl.freelanceCtrl.createFreelance)
 router.post('/projects', ctrl.projectsCtrl.createProject)
 
+// PUT ROUTES
+router.put('/blogs/:id', ctrl.blogCtrl.updateBlog)
+router.put('/current/:id', ctrl.currentCtrl.updateCurrent)
+router.put('/experience/:id', ctrl.experienceCtrl.updateExperience)
+router.put('/freelance/:id', ctrl.freelanceCtrl.updateFreelance)
+router.put('/projects/:id', ctrl.projectsCtrl.updateProject)
+
 // DELETE ROUTES
 router.delete('/blogs/:id', ctrl.blogCtrl.deleteBlog)
 router.delete('/current/:id', ctrl.currentCtrl.deleteCurrent)

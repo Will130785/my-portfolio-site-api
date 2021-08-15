@@ -30,6 +30,26 @@ module.exports.createProject = async (req, res) => {
   }
 }
 
+// Update project
+module.exports.updateProject = async (req, res) => {
+  // Get id from params
+  const id = await req.params.id
+  // Get data from body
+  const data = await req.body
+  try {
+    Project.findByIdAndUpdate(id, data, (err, updatedProject) => {
+      if (!err) {
+        console.log('Updated project')
+        res.send(updatedProject)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // Delete project
 module.exports.deleteProject = async (req, res) => {
   // get id from params

@@ -35,6 +35,26 @@ module.exports.createBlog = async (req, res) => {
   }
 }
 
+// Edit blog
+module.exports.updateBlog = async (req, res) => {
+  // Get id from params
+  const id = await req.params.id
+  // Get data from body
+  const data = await req.body
+  try {
+    Blog.findByIdAndUpdate(id, data, (err, updatedBlog) => {
+      if (!err) {
+        console.log('Updated blog')
+        res.send(updatedBlog)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // Delete Blog
 module.exports.deleteBlog = async (req, res) => {
   // get id from params

@@ -34,6 +34,26 @@ module.exports.createFreelance = async (req, res) => {
   }
 }
 
+// Update freelance
+module.exports.updateFreelance = async (req, res) => {
+  // Get id from params
+  const id = await req.params.id
+  // Get data from body
+  const data = await req.body
+  try {
+    Freelance.findByIdAndUpdate(id, data, (err, updatedFreelance) => {
+      if (!err) {
+        console.log('Updated freelance')
+        res.send(updatedFreelance)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // Delete freelance
 module.exports.deleteFreelance = async (req, res) => {
   // get id from params

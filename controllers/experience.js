@@ -34,6 +34,26 @@ module.exports.createExperience = async (req, res) => {
   }
 }
 
+// Update experience
+module.exports.updateExperience = async (req, res) => {
+  // Get id from params
+  const id = await req.params.id
+  // Get data from body
+  const data = await req.body
+  try {
+    Experience.findByIdAndUpdate(id, data, (err, updatedExperience) => {
+      if (!err) {
+        console.log('Updated experience')
+        res.send(updatedExperience)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // Delete experience
 module.exports.deleteExperience = async (req, res) => {
   // Get Id from params
