@@ -39,5 +39,6 @@ router.get('/website/blogs', ctrl.websiteCtrl.getBlogsWebsite)
 router.get('/website/current', ctrl.websiteCtrl.getCurrentWebsite)
 router.get('/website/freelance', ctrl.websiteCtrl.getFreelanceWebsite)
 router.get('/website/projects', ctrl.websiteCtrl.getProjectsWebsite)
+router.get('/website/projects/:id', ctrl.websiteCtrl.getProjectWebsite)
 
 module.exports = router

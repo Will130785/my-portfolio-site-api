@@ -66,3 +66,21 @@ module.exports.getProjectsWebsite = async (req, res) => {
     console.log(err)
   }
 }
+
+// Get single project for website
+module.exports.getProjectWebsite = async (req, res) => {
+  console.log(req.params.id)
+  // Get id from req
+  const id = await req.params.id
+  try {
+    Project.findById(id, (err, project) => {
+      if (!err) {
+        res.send(project)
+      } else {
+        console.log(err)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
